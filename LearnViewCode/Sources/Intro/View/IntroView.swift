@@ -31,8 +31,7 @@ class IntroView: UIView {
         super.init(frame: .zero)
         backgroundColor = .white
         addSubviews()
-        constraintHelloLabel()
-        constraintNameLabel()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -44,25 +43,12 @@ class IntroView: UIView {
         addSubview(nameLabel)
     }
 
-    private func constraintHelloLabel() {
-        let constraint = [
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
             hellolabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            hellolabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ]
-
-        constraint.forEach { (item) in
-            item.isActive = true
-        }
-    }
-
-    private func constraintNameLabel() {
-        let constraint = [
+            hellolabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             nameLabel.topAnchor.constraint(equalTo: hellolabel.bottomAnchor, constant: 12),
             nameLabel.centerXAnchor.constraint(equalTo: hellolabel.centerXAnchor)
-        ]
-
-        constraint.forEach { (item) in
-            item.isActive = true
-        }
+        ])
     }
 }
